@@ -4,11 +4,11 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="theme-color" content="#102c25" />
-  <meta name="description" content="Jadwal sholat lokal dan penunjuk arah kiblat dalam satu aplikasi." />
+  <meta name="description" content="Panduan ibadah di perjalanan: jadwal salat dan kiblat di kota tujuan, pencarian masjid, dan makanan halal." />
   <link rel="manifest" href="/manifest.webmanifest" />
   <link rel="icon" href="/icon.svg" type="image/svg+xml" />
-  <link rel="stylesheet" href="/styles.css" />
-  <title>Sajada — Temukan waktumu</title>
+  <link rel="stylesheet" href="/styles.css?v=2" />
+  <title>Sajada — Panduan ibadah di perjalanan</title>
 </head>
 <body>
   <div class="app-shell">
@@ -19,8 +19,13 @@
 
     <main id="home">
       <section class="hero">
-        <div class="hero-copy"><p class="eyebrow" id="todayLabel">WAKTU SETEMPAT</p><h1>Jalani hari,<br /><em>selangkah demi selangkah.</em></h1><p class="hero-note">Waktu sholat dan arah kiblat untuk perjalananmu hari ini.</p></div>
+        <div class="hero-copy"><p class="eyebrow" id="todayLabel">WAKTU SETEMPAT</p><h1>Temukan ritme,<br /><em>di setiap perjalanan.</em></h1><p class="hero-note">Waktu salat dan arah kiblat, ke mana pun perjalananmu.</p></div>
         <div class="sun-orbit" aria-hidden="true"><span class="sun-core"></span><span class="orbit orbit-one"></span><span class="orbit orbit-two"></span><span class="orbit-dot"></span></div>
+      </section>
+
+      <section class="trip-planner" aria-label="Destinasi perjalanan">
+        <div><p class="eyebrow">PANDUAN IBADAH DI PERJALANAN</p><h2 id="tripTitle">Pilih kota tujuan</h2><p id="tripHint">Jadwal salat dan kiblat menyesuaikan lokasi yang kamu pilih.</p></div>
+        <button class="trip-button" id="openDestination" type="button">Atur kota <span aria-hidden="true">→</span></button>
       </section>
 
       <section class="next-card" aria-live="polite">
@@ -34,6 +39,29 @@
         <p class="source-note" id="sourceNote">Menggunakan metode perhitungan Singapura (umum di Asia Tenggara).</p>
       </section>
 
+      <section class="section trip-needs" aria-label="Kebutuhan perjalanan">
+        <div class="section-heading"><div><p class="eyebrow">DI SEKITAR DESTINASI</p><h2>Temukan tempat penting</h2></div></div>
+        <div class="nearby-grid">
+          <a class="nearby-card" id="mosquesLink" href="https://www.google.com/maps/search/masjid+near+me" target="_blank" rel="noreferrer"><span class="nearby-icon" aria-hidden="true">⌖</span><span><strong>Masjid & musala</strong><small id="mosquesLocation">Cari tempat salat di sekitar kota</small></span><span class="nearby-arrow" aria-hidden="true">↗</span></a>
+          <a class="nearby-card" id="halalLink" href="https://www.google.com/maps/search/halal+food+near+me" target="_blank" rel="noreferrer"><span class="nearby-icon" aria-hidden="true">⌖</span><span><strong>Makanan halal</strong><small id="halalLocation">Temukan pilihan di sekitar tujuan</small></span><span class="nearby-arrow" aria-hidden="true">↗</span></a>
+        </div>
+        <p class="nearby-note">Hasil pencarian dibuka di Google Maps.</p>
+      </section>
+
+      <section class="section reading-section" id="bacaan">
+        <div class="section-heading"><div><p class="eyebrow">BACAAN PILIHAN</p><h2>Luangkan waktu membaca</h2></div></div>
+        <article class="reading-card">
+          <div class="reading-number">18</div>
+          <div class="reading-info"><p class="reading-tag">SURAT PILIHAN</p><h3>Al-Kahfi</h3><p>110 ayat <span aria-hidden="true">·</span> Makkiyah</p></div>
+          <a class="reading-button" href="/baca.html?surah=18">Baca <span aria-hidden="true">→</span></a>
+        </article>
+        <article class="reading-card">
+          <div class="reading-number">36</div>
+          <div class="reading-info"><p class="reading-tag">SURAT PILIHAN</p><h3>Yasin</h3><p>83 ayat <span aria-hidden="true">·</span> Makkiyah</p></div>
+          <a class="reading-button" href="/baca.html?surah=36">Baca <span aria-hidden="true">→</span></a>
+        </article>
+      </section>
+
       <section class="qibla-card" id="qibla">
         <div class="qibla-copy"><p class="eyebrow">TEMUKAN ARAH</p><h2>Menghadap<br />ke <em>rumah-Nya.</em></h2><p>Kompas sederhana untuk membantumu menemukan arah kiblat dari mana pun kamu berada.</p><button id="openCompass" class="primary-button" type="button">Buka kompas <span>↗</span></button></div>
         <div class="mini-compass" aria-hidden="true"><div class="mini-ring"><span class="mini-n">U</span><span class="mini-e">T</span><span class="mini-s">S</span><span class="mini-w">B</span><span class="mini-needle">◆</span><span class="mini-center">✳</span></div></div>
@@ -41,12 +69,13 @@
 
       <section class="quote-strip"><span class="quote-mark">“</span><p>Sesungguhnya sholat itu adalah kewajiban yang ditentukan waktunya atas orang-orang yang beriman.</p><small>QS. An-Nisa: 103</small></section>
     </main>
-    <footer><span>✳ sajada</span><span>Ruang kecil untuk jeda.</span></footer>
+    <footer><span>✳ sajada</span><span>Ruang kecil untuk jeda.</span><a class="geo-attribution" href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer">Data lokasi © OpenStreetMap</a></footer>
   </div>
 
   <nav class="bottom-nav" aria-label="Navigasi utama"><a class="nav-item active" href="#home"><span>⌂</span>Beranda</a><a class="nav-item" href="#qibla" id="navQibla"><span>⊙</span>Kiblat</a><button class="nav-item" id="navLocation" type="button"><span>⌖</span>Lokasi</button></nav>
 
-  <div class="modal" id="compassModal" aria-hidden="true"><div class="modal-backdrop" data-close></div><section class="compass-sheet" role="dialog" aria-modal="true" aria-labelledby="compassTitle"><div class="sheet-handle"></div><button class="close-button" data-close aria-label="Tutup">×</button><p class="eyebrow">ARAH KIBLAT</p><h2 id="compassTitle">Ikuti penunjuknya</h2><p class="compass-instruction" id="compassInstruction">Pegang ponsel mendatar dan jauhkan dari benda magnetik.</p><div class="compass-stage"><div class="compass-dial" id="compassDial"><span class="direction north">U</span><span class="direction east">T</span><span class="direction south">S</span><span class="direction west">B</span><span class="degree-label" id="degreeLabel">—°</span><div class="qibla-pointer" id="qiblaPointer"><span class="pointer-tip"></span><span class="kaaba">▣</span></div><div class="dial-center">✳</div></div></div><div class="bearing-row"><span>Arah kiblat dari lokasimu</span><strong id="bearingValue">—°</strong></div><button class="primary-button full-button" id="enableCompass" type="button">Aktifkan kompas <span>→</span></button><p class="sensor-note">Kompas memerlukan izin sensor gerak dan hanya akurat jika sensor perangkat mendukungnya.</p></section></div>
+  <div class="modal" id="compassModal" aria-hidden="true"><div class="modal-backdrop" data-close></div><section class="compass-sheet" role="dialog" aria-modal="true" aria-labelledby="compassTitle"><div class="sheet-handle"></div><button class="close-button" data-close aria-label="Tutup">×</button><p class="eyebrow">ARAH KIBLAT</p><h2 id="compassTitle">Ikuti penunjuknya</h2><p class="compass-instruction" id="compassInstruction">Pegang ponsel mendatar dan jauhkan dari benda magnetik.</p><div class="compass-stage"><div class="compass-dial" id="compassDial"><span class="direction north">U</span><span class="direction east">T</span><span class="direction south">S</span><span class="direction west">B</span><span class="degree-label" id="degreeLabel">—°</span><div class="qibla-pointer" id="qiblaPointer"><span class="pointer-tip"></span><span class="kaaba">▣</span></div><div class="dial-center">✳</div></div></div><div class="bearing-row"><span id="bearingLabel">Arah kiblat di kota pilihan</span><strong id="bearingValue">—°</strong></div><button class="primary-button full-button" id="enableCompass" type="button">Aktifkan kompas <span>→</span></button><p class="sensor-note">Kompas memerlukan izin sensor gerak dan hanya akurat jika sensor perangkat mendukungnya.</p></section></div>
+  <div class="modal destination-modal" id="destinationModal" aria-hidden="true"><div class="modal-backdrop" data-close-destination></div><section class="destination-sheet" role="dialog" aria-modal="true" aria-labelledby="destinationTitle"><div class="sheet-handle"></div><button class="close-button" data-close-destination aria-label="Tutup">×</button><p class="eyebrow">RENCANAKAN PERSINGGAHAN</p><h2 id="destinationTitle">Pilih kota tujuan</h2><p class="destination-description">Kami sesuaikan waktu salat dan arah kiblat berdasarkan kota pilihanmu.</p><form id="destinationSearchForm" class="destination-search"><label class="sr-only" for="destinationQuery">Nama kota atau negara</label><input id="destinationQuery" name="q" type="search" placeholder="Contoh: Kyoto, Jepang" autocomplete="off" required /><button type="submit">Cari</button></form><button class="use-location-button" id="useMyLocation" type="button">⌖ Gunakan lokasi saya saat ini</button><p class="destination-status" id="destinationStatus" role="status"></p><div class="destination-results" id="destinationResults"></div><p class="geo-attribution">Pencarian lokasi oleh <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer">OpenStreetMap contributors</a>.</p></section></div>
   <div class="toast" id="toast" role="status"></div>
   <script src="/app.js" defer></script>
 </body>
